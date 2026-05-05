@@ -1,37 +1,32 @@
 # Architecture Overview
 
+## ASCII Diagrams
 ```
-+------------------+
-|      Client       |
-+------------------+
-        |  ^
-        |  |
-        v  |
-+------------------+   +---------------------+
-|  REST API Layer  |<->|  Service Layer      |
-+------------------+   +---------------------+
-        |  ^
-        |  |
-        v  |
-+------------------+   +---------------------+
-| Data Access Layer |<->|  PostgreSQL DB     |
-+------------------+   +---------------------+
+   +---------------+       +-----------------+
+   |   Controller  |<----->|   Service Layer  |
+   +---------------+       +-----------------+
+            |                          |
+            |                          |
+            v                          v  
+   +---------------+       +-----------------+
+   |    Model      |<----->|   Repository     |
+   +---------------+       +-----------------+
 ```
 
-## Layer Descriptions
-- **Client:** Utilizes RESTful API endpoints.
-- **REST API Layer:** Handles incoming requests and sends responses.
-- **Service Layer:** Contains business logic and interacts with data access layer.
-- **Data Access Layer:** Communicates with PostgreSQL database using Spring Data JPA.
+## Layer Descriptions and Responsibilities
+- **Controller Layer:** Handles incoming API requests and maps them to the appropriate service methods.
+- **Service Layer:** Contains business logic and serves as a bridge between the controller and repository.
+- **Model Layer:** Defines the data structures used throughout the application.
+- **Repository Layer:** Responsible for data access and management, interacting with the PostgreSQL database.
 
 ## Data Flow Explanation
-1. Client sends an API request.
-2. Request is processed by the REST API Layer.
-3. Business logic is executed in the Service Layer.
-4. Interactions with the database occur through the Data Access Layer.
-5. Responses are sent back through the REST API Layer to the Client.
+1. A client sends an HTTP request to the controller.
+2. The controller processes the request and calls the corresponding service method.
+3. The service layer performs business logic, potentially calling repository methods to access or persist data.
+4. The repository interacts with the PostgreSQL database to fulfill the data request.
+5. The response flows back up to the client through the service and controller layers.
 
 ## Key Architecture Decisions
-- **Spring Boot:** Chosen for rapid application development.
-- **PostgreSQL:** Selected for its robustness and advanced features.
-- **JWT Authentication:** Opted for security and scalability in API access.
+- **Spring Boot Framework:** Chosen for its simplicity and ease of use in building REST APIs.
+- **PostgreSQL:** Selected for its robustness and support for complex queries and transactions.
+- **JWT for Authentication:** Provides a stateless and scalable method for securing endpoints.
