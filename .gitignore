@@ -1,13 +1,22 @@
 # Maven
-target/
+/target/
 
-# IDE
+# IDEs
 .idea/
 *.iml
 
-# OS files
-.DS_Store
-Thumbs.db
+# Logs
+logs/
+*.log
 
 # Environment Variables
 .env
+
+# Spring Boot
+*.db
+*.db-journal
+
+# Other
+*.class
+*.jar
+*.war
