@@ -1,34 +1,68 @@
 # Library API
 
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13.x-blue.svg)
-![Maven](https://img.shields.io/badge/Maven-3.x-orange.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Java](https://img.shields.io/badge/java-17-brightgreen.svg)
 
 ## Description
-Library API is a simple REST API for managing a library system with books and authors.
 
-## Installation
+A simple REST API for managing a library system that includes books and authors. This project leverages Spring Boot, PostgreSQL, and JWT for authentication.
+
+## Installation Steps
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/ChenfourAmine/library-api-v2.git
    cd library-api-v2
    ```
-2. Configure your PostgreSQL database in `application.properties`.
-3. Build the project using Maven:
-   ```bash
-   mvn clean install
-   ```
-4. Run the application:
+
+2. Ensure you have Java 17 and Maven installed.
+
+3. Install PostgreSQL and create a database for the application.
+
+4. Update `application.properties` file with your database configuration.
+
+5. Run the application:
    ```bash
    mvn spring-boot:run
    ```
 
-## Usage
-- Base URL: `http://localhost:8080/api`
-- Authentication: Use JWT tokens for secure access.
+## Usage Example
+
+- To create a new book:
+   ```bash
+   POST /api/books
+   {
+       "title": "The Great Gatsby",
+       "authorId": 1
+   }
+   ```
+
+- To retrieve all books:
+   ```bash
+   GET /api/books
+   ```
 
 ## Contributing
-Contributions are welcome! Please open an issue or submit a pull request.
+
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a pull request.
 
 ## License
-This project is licensed under the MIT License.
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to the Spring Boot community.
+
+---
+
+## Best Practices
+- Use Spring Boot starters for quick dependency management.
+- Implement RESTful principles for designing your API.
+- Follow the MVC architecture for separation of concerns.
+- Use DTOs (Data Transfer Objects) to decouple your API from the internal models.
+- Utilize Spring Data JPA for interacting with PostgreSQL.
